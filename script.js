@@ -28,22 +28,25 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
-function createCard {
-    
-}
 
-
-function displayBooks() {
-    for (let i = 0; i < myLibrary.length; i++) {
-
-        libraryContainer.appendChild(card);
-        card.innerHTML = '<p> Title: </p>' + this.title + '<p> Author: </p>' + this.author + '<p> Pages: </p>' + this.pages + '<p> Read: </p> ' + this.read;
-
-
-    }
-
-
-}
 
 addBookToLibrary('Lord Of The Rings', 'J.R.R Tolkien', '3000', true);
+addBookToLibrary('Lord Of The Rings 2', 'J.R.R Tolkien 2', '3100', true);
+addBookToLibrary('Lord Of The Rings 3', 'J.R.R Tolkien 3', '3050', true);
+addBookToLibrary('Lord Of The Rings 4', 'J.R.R Tolkien 4', '3200', true);
+
+console.log(myLibrary);
+
+function displayBooks() {
+
+for(let i = 0; i < myLibrary.length; i++) {
+    console.log(myLibrary[i]);
+    libraryContainer.innerHTML += '<div class="card"><p> Title: ' + myLibrary[i].title + '</p><p> Author: ' + myLibrary[i].author + '</p><p> Pages: ' + myLibrary[i].pages + '</p><p> Read: ' + myLibrary[i].read + '</p></div> ';
+
+}
+
+
+
+}
+
 displayBooks();

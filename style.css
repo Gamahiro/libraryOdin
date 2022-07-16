@@ -2,3 +2,22 @@ body {
     background-color: darkgray;
 }
 
+.libraryContainer {
+    background-color: dimgray;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: wheat;
+    padding: 15px;
+    border: 2px black solid;
+    margin: 5px;
+}
+
+#newBookBtn {
+    background-color: blue;
+    color: white;
+    font-size: 102px;
+    padding: 15px;
+}
