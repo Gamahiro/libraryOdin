@@ -21,3 +21,9 @@ body {
     font-size: 102px;
     padding: 15px;
 }
+
+#newBookForm {
+    flex-direction: column;
+    width: 300px;
+    display: none;
+}
