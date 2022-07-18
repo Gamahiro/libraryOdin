@@ -99,8 +99,17 @@ function updateLibrary() {
             
         });
     
-    
-    
+        let readBtn = document.createElement('button');
+        readBtn.className = 'readBookBtn';
+        readBtn.textContent = 'Read';
+        card.appendChild(readBtn);
+
+        readBtn.addEventListener('click', () => {
+            value.read = !value.read;
+            updateLibrary();
+
+        })
+        
     });
 
 }
