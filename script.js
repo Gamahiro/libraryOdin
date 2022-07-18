@@ -1,6 +1,7 @@
 const libraryContainer = document.querySelector('.libraryContainer');
 const newBookBtn = document.querySelector('#newBookBtn');
 const container = document.querySelector('.container');
+const closeBtn = document.querySelector('#closeBtn');
 
 let myLibrary = [];
 
@@ -10,9 +11,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-
-
-
+    let id;
 }
 
 Book.prototype.info = function () {
@@ -34,10 +33,7 @@ function addBookToLibrary(title, author, pages, read) {
 
 
 
-addBookToLibrary('Lord Of The Rings', 'J.R.R Tolkien', '3000', true);
-addBookToLibrary('Lord Of The Rings 2', 'J.R.R Tolkien 2', '3100', true);
-addBookToLibrary('Lord Of The Rings 3', 'J.R.R Tolkien 3', '3050', true);
-addBookToLibrary('Lord Of The Rings 4', 'J.R.R Tolkien 4', '3200', true);
+
 
 
 /* const cardContent = '<div class="card"><p> Title: ' + myLibrary[i].title + '</p><p> Author: ' + myLibrary[i].author + '</p><p> Pages: ' + myLibrary[i].pages + '</p><p> Read: ' + myLibrary[i].read + '</p></div> ';
@@ -56,69 +52,99 @@ libraryContainer.appendChild(para);
 }
  */
 
-myLibrary.forEach(function (value, i) {
+function clearLibrary() {
+    libraryContainer.innerHTML = '';
+}
 
-    let card = document.createElement('div');
-    card.className = 'card';
-    card.id = 'id' + i;
-    let name = document.createTextNode('Title: ' + value.title);
-    console.log(value);
-    card.appendChild(name);
 
-    let author = document.createTextNode('Author: ' + value.author);
-    card.appendChild(author);
+function updateLibrary() {
+    clearLibrary();
 
-    let pages = document.createTextNode('Pages: ' + value.pages);
-    card.appendChild(pages);
+    myLibrary.forEach(function (value, i) {
 
-    let read = document.createTextNode('Read: ' + value.read);
-    card.appendChild(read);
-
-    libraryContainer.appendChild(card);
-
-    let btn = document.createElement('button');
-    btn.className = 'rmBookBtn';
-    btn.textContent = 'Remove Book';
-    btn.id = 'rmbtn' + i;
-    card.appendChild(btn);
-
-    btn.addEventListener('click', () => {
-        const index = myLibrary.indexOf(value.title)
-        console.log(index);
-       let removed = myLibrary.splice(index, 1);
-        console.log(removed);
-        
+        myLibrary[i].id = i;
+        let card = document.createElement('div');
+        card.className = 'card';
+        card.id = 'id' + i;
+        let name = document.createTextNode('Title: ' + value.title);
+        console.log(value);
+        card.appendChild(name);
+    
+        let author = document.createTextNode('Author: ' + value.author);
+        card.appendChild(author);
+    
+        let pages = document.createTextNode('Pages: ' + value.pages);
+        card.appendChild(pages);
+    
+        let read = document.createTextNode('Read: ' + value.read);
+        card.appendChild(read);
+    
+        libraryContainer.appendChild(card);
+    
+        let btn = document.createElement('button');
+        btn.className = 'rmBookBtn';
+        btn.textContent = 'Remove Book';
+        btn.id = 'rmbtn' + i;
+        card.appendChild(btn);
+    
+        btn.addEventListener('click', () => {
+            const index = myLibrary.indexOf(value);
+            console.log(value.id);
+            console.log(index);
+    
+           let removed = myLibrary.splice(index, 1);
+            console.log(removed);
+    
+            libraryContainer.removeChild(card);
+            
+        });
+    
+    
+    
     });
 
-
-
-});
-
+}
 
 
 
 
-/* 
+
+
+
 function newBookForm() {
     document.querySelector('#newBookForm').style.display = 'flex';
-
- container.innerHTML =  
+ 
 }
- */
 
-/* newBookBtn.addEventListener('click', newBookForm);
+closeBtn.addEventListener('click', function () {
+    document.querySelector('#newBookForm').style.display = 'none';
+})
+ newBookBtn.addEventListener('click', newBookForm);
 
-document.querySelector('form').onsubmit = function(){
-    
-    addBookToLibrary(
-        document.getElementById('title').value,
-        document.getElementById('author').value,
-        document.getElementById('pages').value,
-        document.getElementById('read').value
-        )
-        console.log(myLibrary);
-displayBooks()
+document.querySelector('form').onsubmit = function(e){
+    e.preventDefault();
+    title = document.getElementById('title').value,
+    author = document.getElementById('author').value,
+    pages = document.getElementById('pages').value,
+    read = document.getElementById('read').value
+    if(read === 'on') {
+        read = true;
+    }
+    else {
+        read = false;
+    }
 
-} */
+    addBookToLibrary(title, author, pages, read);
+    updateLibrary();
+}
 
 
+function init() {
+    addBookToLibrary('Lord Of The Rings', 'J.R.R Tolkien', '3000', true);
+    addBookToLibrary('Lord Of The Rings 2', 'J.R.R Tolkien 2', '3100', true);
+    addBookToLibrary('Lord Of The Rings 3', 'J.R.R Tolkien 3', '3050', true);
+    addBookToLibrary('Lord Of The Rings 4', 'J.R.R Tolkien 4', '3200', true);
+    updateLibrary();
+}
+
+init();

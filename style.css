@@ -27,3 +27,16 @@ body {
     width: 300px;
     display: none;
 }
+
+#closeBtn {
+    background-color: white;
+    color: red;
+    width: 20px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 285px;
+    bottom: 10px;
+}
