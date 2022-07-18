@@ -2,6 +2,7 @@ const libraryContainer = document.querySelector('.libraryContainer');
 const newBookBtn = document.querySelector('#newBookBtn');
 const container = document.querySelector('.container');
 const closeBtn = document.querySelector('#closeBtn');
+const para = document.createElement('p');
 
 let myLibrary = [];
 
@@ -60,6 +61,9 @@ function clearLibrary() {
 function updateLibrary() {
     clearLibrary();
 
+    
+
+
     myLibrary.forEach(function (value, i) {
 
         myLibrary[i].id = i;
@@ -72,6 +76,7 @@ function updateLibrary() {
     
         let author = document.createTextNode('Author: ' + value.author);
         card.appendChild(author);
+        
     
         let pages = document.createTextNode('Pages: ' + value.pages);
         card.appendChild(pages);

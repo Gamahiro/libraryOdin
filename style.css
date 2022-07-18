@@ -4,8 +4,9 @@ body {
 
 .libraryContainer {
     background-color: dimgray;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-auto-rows: 150px;
 }
 
 .card {
@@ -16,10 +17,11 @@ body {
 }
 
 #newBookBtn {
-    background-color: blue;
+    background-color: green;
     color: white;
-    font-size: 102px;
-    padding: 15px;
+    font-size: 32px;
+    padding: 0px 7px 0px 7px;
+    margin-bottom: 10px;
 }
 
 #newBookForm {
@@ -39,4 +41,24 @@ body {
     position: relative;
     left: 285px;
     bottom: 10px;
+
+}
+
+#newBtn {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
