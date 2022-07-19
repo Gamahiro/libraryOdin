@@ -1,12 +1,15 @@
 body {
     background-color: darkgray;
+    display: flex;
+    justify-content: center;
 }
 
 .libraryContainer {
     background-color: dimgray;
+    max-width: 1100px;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-auto-rows: 150px;
+    grid-template-columns: auto auto auto auto;
+    grid-auto-rows: auto;
 }
 
 .card {
@@ -14,6 +17,9 @@ body {
     padding: 15px;
     border: 2px black solid;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
 
 #newBookBtn {
@@ -47,13 +53,27 @@ body {
 #newBtn {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100px;
+    border: 2px black solid;
+    border-radius: 5px;
+    background-color: aliceblue;
+    margin-bottom: 15px;
+
+}
+#newBtn p {
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: underline;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    max-width: 1100px;
+
 }
 
 form {
@@ -61,4 +81,6 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: gray;
+    margin-bottom: 15px;
 }

@@ -57,11 +57,17 @@ function clearLibrary() {
     libraryContainer.innerHTML = '';
 }
 
+function readEmoji(value) {
+    if(value === true) {
+        return '<span style="color:green; font-size:32px; background-color:white; border:2px solid black">✔</span>';
+    }
+    else return '<span style="color:red; font-size:32px; background-color:white; border:2px solid black">❌</span>';
+}
 
 function updateLibrary() {
     clearLibrary();
 
-    
+
 
 
     myLibrary.forEach(function (value, i) {
@@ -73,37 +79,38 @@ function updateLibrary() {
         let name = document.createTextNode('Title: ' + value.title);
         console.log(value);
         card.appendChild(name);
-    
+
         let author = document.createTextNode('Author: ' + value.author);
         card.appendChild(author);
-        
-    
+
+
         let pages = document.createTextNode('Pages: ' + value.pages);
         card.appendChild(pages);
-    
+
         let read = document.createTextNode('Read: ' + value.read);
         card.appendChild(read);
-    
+
+        card.innerHTML = "<p>" + 'Title: ' + value.title + "</p> <p>" + 'Author: ' + value.author + "</p> <p>" + 'Pages: ' + value.pages + "</p> <p>" + 'Read: ' + readEmoji(value.read) + "</p>";
         libraryContainer.appendChild(card);
-    
+
         let btn = document.createElement('button');
         btn.className = 'rmBookBtn';
         btn.textContent = 'Remove Book';
         btn.id = 'rmbtn' + i;
         card.appendChild(btn);
-    
+
         btn.addEventListener('click', () => {
             const index = myLibrary.indexOf(value);
             console.log(value.id);
             console.log(index);
-    
-           let removed = myLibrary.splice(index, 1);
+
+            let removed = myLibrary.splice(index, 1);
             console.log(removed);
-    
+
             libraryContainer.removeChild(card);
-            
+
         });
-    
+
         let readBtn = document.createElement('button');
         readBtn.className = 'readBookBtn';
         readBtn.textContent = 'Read';
@@ -114,7 +121,7 @@ function updateLibrary() {
             updateLibrary();
 
         })
-        
+
     });
 
 }
@@ -125,23 +132,27 @@ function updateLibrary() {
 
 
 
-function newBookForm() {
+function openBookForm() {
     document.querySelector('#newBookForm').style.display = 'flex';
- 
+    document.querySelector('#newBtn').style.display = 'none';
 }
 
-closeBtn.addEventListener('click', function () {
+function closeBookForm() {
     document.querySelector('#newBookForm').style.display = 'none';
-})
- newBookBtn.addEventListener('click', newBookForm);
+    document.querySelector('#newBtn').style.display = 'flex';
+}
 
-document.querySelector('form').onsubmit = function(e){
+closeBtn.addEventListener('click', closeBookForm);
+newBookBtn.addEventListener('click', openBookForm);
+
+document.querySelector('form').onsubmit = function (e) {
     e.preventDefault();
-    title = document.getElementById('title').value,
-    author = document.getElementById('author').value,
-    pages = document.getElementById('pages').value,
-    read = document.getElementById('read').value
-    if(read === 'on') {
+
+        title = document.getElementById('title').value,
+        author = document.getElementById('author').value,
+        pages = document.getElementById('pages').value,
+        read = document.getElementById('read').value
+    if (read === 'on') {
         read = true;
     }
     else {
