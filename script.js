@@ -19,8 +19,6 @@ Book.prototype.info = function () {
     return title, author, pages, read;
 }
 
-
-
 function addBookToLibrary(title, author, pages, read) {
     const newBook = Object.create(Book);
     newBook.title = title;
@@ -31,27 +29,6 @@ function addBookToLibrary(title, author, pages, read) {
     console.log(myLibrary);
 
 }
-
-
-
-
-
-
-/* const cardContent = '<div class="card"><p> Title: ' + myLibrary[i].title + '</p><p> Author: ' + myLibrary[i].author + '</p><p> Pages: ' + myLibrary[i].pages + '</p><p> Read: ' + myLibrary[i].read + '</p></div> ';
- */
-
-/* function displayBooks() {
-
-for(let i = myLibrary.length - 1; i >= 0; i--) {
-    console.log(myLibrary[i]);
-    libraryContainer.innerHTML += '<div class="card"><p> Title: ' + myLibrary[i].title + '</p><p> Author: ' + myLibrary[i].author + '</p><p> Pages: ' + myLibrary[i].pages + '</p><p> Read: ' + myLibrary[i].read + '</p></div> ';
-const para = document.createElement('div');
-para.innerText = 'Title: ' + myLibrary[i].title + 'Author: ' + myLibrary[i].author + 'Pages: ' + myLibrary[i].pages + 'Read: ' + myLibrary[i].read;
-libraryContainer.appendChild(para);
-
-}
-}
- */
 
 function clearLibrary() {
     libraryContainer.innerHTML = '';
